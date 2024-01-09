@@ -584,13 +584,14 @@ function getURLValues(url) {
   const urlObj = new URL(url);
 
   let URLSearchParams = urlObj.searchParams;
-  let paramsArray = Array.from(URLSearchParams.keys());
-  let searchParamsArray = [];
+  let keysArray = URLSearchParams.keys();
+  let searchParams = [];
 
-  for (let key of paramsArray) {
-    searchParamsArray.push(URLSearchParams.getAll(key));
+  for (let key of keysArray) {
+    const allParams = URLSearchParams.getAll(key);
+    searchParams.push(...allParams);
   }
-  return searchParamsArray;
+  return searchParams;
 }
 
 // Приклад використання функції getURLValues
